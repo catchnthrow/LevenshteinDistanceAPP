@@ -1,0 +1,16 @@
+<div>    
+    <form>
+        <h2>Login here</h2>
+        <input name="username" type="email" id="inputEmail" class="form-control" placeholder="Email address" required [(ngModel)]="uid" #email="ngModel">
+        <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">Invalid username</div>
+        <br>
+        <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required [(ngModel)]="pwd" #password="ngModel"> 
+        <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">Invalid password</div>
+        
+        <br>
+        <div class="alert alert-danger" role="alert" *ngIf="failedLogin">
+          Invalid email or password!!! Try Again.
+        </div>
+        <button  style="cursor:pointer;" type="submit" (click)="login()">Go</button>
+      </form>
+</div>

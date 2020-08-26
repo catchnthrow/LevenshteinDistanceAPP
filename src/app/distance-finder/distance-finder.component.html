@@ -1,0 +1,33 @@
+<div>    
+    <form>
+        <h2>Levenshtein Distance Finder</h2>
+        <input name="input1" type="text" id="input1" placeholder="Enter your string 1 here" required [(ngModel)]="input1">
+        <div *ngIf="input1Err" class="alert alert-danger">Required field</div>
+        <br>
+        <input name="input2" type="text" id="input2" placeholder="Enter your string 2 here" required [(ngModel)]="input2">
+        <div *ngIf="input2Err" class="alert alert-danger">Required field</div>
+        <br>
+        <button  style="cursor:pointer;" type="submit" (click)="findDistance()">Submit</button>
+
+        <div *ngIf="errMessage && errMessage.length > 0" class="alert alert-danger">{{errMessage}}</div>
+    </form>
+    
+    <div *ngIf="drawTable">
+        <div>
+            <P>Distance between the strings is <span class="asnwer">{{answer}}</span></P>
+        </div>
+        <h3>Graphical View of the Distance</h3>
+        <table>
+           <thead>
+              <tr>
+                 <th *ngFor="let header of headerRow">{{header}}</th>
+              </tr>
+           </thead>
+           <tbody>
+              <tr *ngFor="let rows of distanceArray">
+                 <td *ngFor="let cols of rows">{{ cols }}</td>
+              </tr>
+           </tbody>
+        </table>
+     </div>
+</div>
