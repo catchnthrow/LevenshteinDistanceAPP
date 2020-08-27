@@ -1,27 +1,25 @@
 # GleacApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.7.
+ 
+# Details for test
+##REST API for authentication and then calculating Levenshtein Distance between two strings
 
-## Development server
+## Web APP Url
+https://gleac.eastus.cloudapp.azure.com/app
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Web API Url 
+https://gleac.eastus.cloudapp.azure.com/api Credentials: prashant@gleac.com | pass123
 
-## Code scaffolding
+##cURL Call to authenticate the API:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+curl --location --request POST 'https://gleac.eastus.cloudapp.azure.com/api/Token'
+--header 'Content-Type: application/json'
+--data-raw '{ "Email": "prashant@gleac.com", "Password": "pass123" }'
 
-## Build
+## cURL Call to find string distance:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+curl --location --request POST 'https://gleac.eastus.cloudapp.azure.com/api/Distance/'
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJHbGVhY1NlcnZpY2VBY3Rpb25Ub2tlbiIsImp0aSI6ImNiMGQwNTdjLWQ3NTMtNGE0OS1iY2E5LTczNDZmMTc2ODNkMSIsImlhdCI6IjgvMjYvMjAyMCA3OjI2OjUyIFBNIiwiSWQiOiJwcmFzaGFudDE5c2VwIiwiRmlyc3ROYW1lIjoiUHJhc2hhbnQiLCJMYXN0TmFtZSI6IlNpbmdoIiwiRW1haWwiOiJwcmFzaGFudEBnbGVhYy5jb20iLCJleHAiOjE1OTg1MzAwMTIsImlzcyI6IkdsZWFjQXV0aGVudGljYXRpb25TZXJ2ZXIiLCJhdWQiOiJHbGVhY1NlcnZpY2VQb3N0bWFuQ2xpZW50In0.GSPfRyZpdvqiTCg6u6orJEG8bO4qgusajEjSG-qTr08'
+--header 'Content-Type: application/json'
+--data-raw '{ "Str1" : "HONDA", "Str2" : "HYUNDAI" }'
